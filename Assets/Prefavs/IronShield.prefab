@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 495136}
   - 61: {fileID: 6164826}
   - 114: {fileID: 11423882}
+  - 114: {fileID: 11400158}
   m_Layer: 0
   m_Name: IronShield
   m_TagString: Untagged
@@ -71,6 +72,17 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!114 &11400158
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fb338bc6cee4ad596bd8c6df620ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11423882
 MonoBehaviour:
   m_ObjectHideFlags: 1

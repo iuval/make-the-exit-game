@@ -1,0 +1,69 @@
+﻿#pragma once
+#include <stdint.h>
+#include "t14.h"
+#include "t1314.h"
+#include "t1315.h"
+#include "t1316.h"
+#include "t1318.h"
+#include "t1324.h"
+#include "t1325.h"
+#include "t1319.h"
+#include "t1322.h"
+#include "t1326.h"
+#include "t1320.h"
+#include "t1327.h"
+#include "t1328.h"
+#include "t1321.h"
+#include "t1329.h"
+#include "t1317.h"
+#include "t1330.h"
+#include "t1331.h"
+#include "t1323.h"
+#include "t1332.h"
+#include "t1333.h"
+struct t1334  : public t14
+{
+};
+struct t1334_SFs{
+	t1314  f0;
+	t1315  f1;
+	t1315  f2;
+	t1315  f3;
+	t1315  f4;
+	t1316  f5;
+	t1316  f6;
+	t1318  f7;
+	t1324  f8;
+	t1325  f9;
+	t1319  f10;
+	t1322  f11;
+	t1326  f12;
+	t1320  f13;
+	t1327  f14;
+	t1328  f15;
+	t1314  f16;
+	t1316  f17;
+	t1321  f18;
+	t1328  f19;
+	t1328  f20;
+	t1329  f21;
+	t1329  f22;
+	t1317  f23;
+	t1329  f24;
+	t1329  f25;
+	t1330  f26;
+	t1330  f27;
+	t1330  f28;
+	t1330  f29;
+	t1330  f30;
+	t1330  f31;
+	t1330  f32;
+	t1330  f33;
+	t1329  f34;
+	t1331  f35;
+	t1323  f36;
+	t1332  f37;
+	t1329  f38;
+	t1333  f39;
+	t1333  f40;
+};

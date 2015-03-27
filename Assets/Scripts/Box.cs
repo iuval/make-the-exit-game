@@ -9,9 +9,10 @@ public class Box : MonoBehaviour {
 	private float goToX = 0;
 	public bool isClickable = false;
 	public bool isAlive = true;
+	private DropAI ai;
 	
 	void Start () {
-	
+		ai = GetComponent<DropAI>();
 	}
 
 	void Update () {
@@ -33,6 +34,8 @@ public class Box : MonoBehaviour {
 			}
 			if (mov.x == goToX && mov.y == goToY) isMoving = false;
 			transform.position = mov;
+			
+			if (ai && !isMoving) ai.ActionOnLanding();
 		}
 	}
 	

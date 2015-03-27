@@ -1,13 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Figures.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Effects/Effect.cs">
     <Files>
-      <File FileName="Assets/Scripts/ItemsManager.cs" Line="5" Column="50" />
-      <File FileName="Assets/Scripts/Effects/Effect.cs" Line="9" Column="2" />
-      <File FileName="Assets/Scripts/Effects/DropEffect.cs" Line="10" Column="54" />
-      <File FileName="Assets/Scripts/Box.cs" Line="9" Column="26" />
-      <File FileName="Assets/Scripts/Effects/NewBoxEffect.cs" Line="18" Column="45" />
-      <File FileName="Assets/Scripts/Figures.cs" Line="76" Column="3" />
+      <File FileName="Assets/Scripts/ItemsManager.cs" Line="91" Column="27" />
+      <File FileName="Assets/Scripts/Effects/Effect.cs" Line="4" Column="16" />
+      <File FileName="Assets/Scripts/Effects/DropEffect.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Box.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Effects/NewBoxEffect.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Figures.cs" Line="72" Column="84" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

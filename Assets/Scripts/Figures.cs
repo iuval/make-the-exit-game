@@ -15,8 +15,6 @@ public class Figures : MonoBehaviour {
 	public GameObject goldShieldPrefav;
 	public GameObject diamonShieldPrefav;
 	
-	public GameObject enemyPrefav;
-	
 	public void Init(GameObject[,] all) {
 		this.all = all;
 		effects = new Effect[] {
@@ -68,6 +66,8 @@ public class Figures : MonoBehaviour {
 			foreach (Vector2 vec in positions) {
 				Debug.Log("Kill: " + vec);
 				Box box = this.all[(int)vec.x, (int)vec.y].GetComponent<Box>();
+				
+				ItemsManager.instance.CreateEnemy(box.gameObject.transform.position);
 				GameObject.Destroy(box.gameObject);
 				this.all[(int)vec.x, (int)vec.y] = null;
 				ItemsManager.instance.CreateBoxAtX((int)vec.x);

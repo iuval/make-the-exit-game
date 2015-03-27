@@ -16,6 +16,6 @@ public class DropEffect : Effect {
 			this.all[(int)vec.x, (int)vec.y] = null;
 			ItemsManager.instance.CreateBoxAtX((int)vec.x);
 		}
-		ItemsManager.instance.CreateDrop(this.prefav, creatBoxAt);
+		ItemsManager.instance.CreateBonus(this.prefav, creatBoxAt);
 	}
 }

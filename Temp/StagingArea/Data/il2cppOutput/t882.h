@@ -1,0 +1,73 @@
+﻿#pragma once
+#include <stdint.h>
+struct t33;
+struct t443;
+struct t882;
+struct t877;
+struct t51;
+struct t443;
+#include "t14.h"
+#include "t884.h"
+struct t882  : public t14
+{
+	bool f10;
+	t33* f11;
+	t33* f12;
+	t33* f13;
+	t33* f14;
+	t33* f15;
+	t33* f16;
+	t33* f17;
+	t33* f18;
+	t33* f19;
+	t33* f20;
+	t33* f21;
+	t33* f22;
+	t33* f23;
+	t33* f24;
+	int32_t f25;
+	t877 * f26;
+	int32_t f27;
+	t443* f28;
+	t443* f29;
+	t443* f30;
+	t443* f31;
+	t443* f32;
+	t443* f33;
+	t443* f34;
+	t443* f35;
+	t443* f36;
+	t443* f37;
+	t443* f38;
+	int32_t f39;
+	bool f40;
+	bool f41;
+	int32_t f42;
+	bool f43;
+	t33* f44;
+	t33* f45;
+	t443* f46;
+	t443* f47;
+	t443* f48;
+	t443* f49;
+	t51* f50;
+	t443* f51;
+	t443* f52;
+	t443* f53;
+	t443* f54;
+	int32_t f55;
+	t33* f56;
+	t443* f57;
+};
+struct t882_SFs{
+	t33* f0;
+	t33* f1;
+	t33* f2;
+	t33* f3;
+	t443* f4;
+	t443* f5;
+	t443* f6;
+	t443* f7;
+	t443* f8;
+	t882 * f9;
+};

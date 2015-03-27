@@ -14,7 +14,7 @@ public class ItemsManager : MonoBehaviour {
 	public GameObject[,] all;
 	public float itemSide;
 	public static int itemsCountH = 5;
-	public static int itemsCountV = 6;
+	public static int itemsCountV = 5;
 	public float initY;
 	public float initX;
 	
@@ -40,9 +40,11 @@ public class ItemsManager : MonoBehaviour {
 														  
 	// Figures
 	private Figures figures;
+	private ArrayList enemies = new ArrayList();
+	public GameObject enemyPrefav;
 	
 	// Consumables
-	private ArrayList consumables = new ArrayList();
+	private ArrayList bonuses = new ArrayList();
 	private ArrayList consumablesToKill = new ArrayList();
 	
 	void Start () {
@@ -106,13 +108,23 @@ public class ItemsManager : MonoBehaviour {
 		return newBox;
 	}
 	
+	public GameObject CreateEnemy(Vector2 pos) {
+		GameObject enemey = CreateDrop(enemyPrefav, pos);
+		enemies.Add(enemey);
+		return enemey;
+	}
+	
+	public GameObject CreateBonus(GameObject prefav, Vector2 pos) {
+		GameObject bonus = CreateDrop(prefav, pos);
+		bonuses.Add(bonus.GetComponent<Box>());
+		return bonus;
+	}
+	
 	public GameObject CreateDrop(GameObject prefav, Vector2 pos) {
 		GameObject newBox = (GameObject)GameObject.Instantiate(prefav);
-		newBox.transform.parent = transform;
 		newBox.transform.position = pos;
 		Box box = newBox.GetComponent<Box>();
 		box.MoveTo(pos.x + Random.Range(-0.2f, 0.2f), -Random.Range(3.6f, 4.2f));
-		consumables.Add(box);
 		return newBox;
 	}
 	
@@ -122,13 +134,13 @@ public class ItemsManager : MonoBehaviour {
 		float ran = Random.value;
 		
 		if (ran >= rareWhen) {
-			result = (GameObject)(GameObject.Instantiate(rares[Random.Range(0, rares.Length - 1)]));
+			result = (GameObject)(GameObject.Instantiate(rares[Random.Range(0, rares.Length)]));
 		} else if (ran > specialWhen) {
-			result = (GameObject)(GameObject.Instantiate(specials[Random.Range(0, specials.Length - 1)]));
+			result = (GameObject)(GameObject.Instantiate(specials[Random.Range(0, specials.Length)]));
 		} else if (ran > commonWhen) {
-			result = (GameObject)(GameObject.Instantiate(commons[Random.Range(0, commons.Length - 1)]));
+			result = (GameObject)(GameObject.Instantiate(commons[Random.Range(0, commons.Length)]));
 		} else {
-			result = (GameObject)(GameObject.Instantiate(empties[Random.Range(0, empties.Length - 1)]));
+			result = (GameObject)(GameObject.Instantiate(empties[Random.Range(0, empties.Length)]));
 		}
 		return result;
 	}
@@ -139,7 +151,7 @@ public class ItemsManager : MonoBehaviour {
 	
 	private void OnPress(Vector2 position) {
 		selectdBoxPos = BoxCoordsAtPosition(position);
-		foreach (Box box in consumables) {
+		foreach (Box box in bonuses) {
 			if (box.gameObject.GetComponent<BoxCollider2D>().OverlapPoint(position)) {
 				box.isAlive = false;
 			}
@@ -148,7 +160,7 @@ public class ItemsManager : MonoBehaviour {
 			}
 		}
 		foreach (Box box in consumablesToKill) {
-			consumables.Remove(box);
+			bonuses.Remove(box);
 			GameObject.Destroy(box.gameObject);
 		}
 		consumablesToKill.Clear();

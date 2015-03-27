@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 449326}
   - 61: {fileID: 6125956}
   - 114: {fileID: 11411310}
+  - 114: {fileID: 11461658}
   m_Layer: 0
   m_Name: Gold
   m_TagString: Untagged
@@ -85,6 +86,17 @@ MonoBehaviour:
   Element: 2
   isClickable: 0
   isAlive: 0
+--- !u!114 &11461658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fb338bc6cee4ad596bd8c6df620ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21231298
 SpriteRenderer:
   m_ObjectHideFlags: 1

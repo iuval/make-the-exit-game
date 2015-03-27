@@ -26,6 +26,7 @@ GameObject:
   - 4: {fileID: 453718}
   - 61: {fileID: 6131928}
   - 114: {fileID: 11408410}
+  - 114: {fileID: 11472290}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -85,6 +86,17 @@ MonoBehaviour:
   Element: 0
   isClickable: 0
   isAlive: 1
+--- !u!114 &11472290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fb338bc6cee4ad596bd8c6df620ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21202652
 SpriteRenderer:
   m_ObjectHideFlags: 1
