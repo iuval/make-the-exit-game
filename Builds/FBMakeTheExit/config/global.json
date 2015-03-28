@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "MakeTheExit": {
+            "applicationId": "JB8UTQxyEy3Qy0G0BPA9JJKUxL6wDeDvCJB1aUNB", 
+            "masterKey": "H9xf79rFvSBkcK8vVet25cQBz6o2NuywgzQ1lXHP"
+        }, 
+        "_default": {
+            "link": "MakeTheExit"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.4.0"
+    }
+}

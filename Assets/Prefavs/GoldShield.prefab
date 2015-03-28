@@ -11,6 +11,7 @@ GameObject:
   - 61: {fileID: 6148494}
   - 114: {fileID: 11482134}
   - 114: {fileID: 11484918}
+  - 50: {fileID: 5002628}
   m_Layer: 0
   m_Name: GoldShield
   m_TagString: Untagged
@@ -59,6 +60,21 @@ Transform:
   - {fileID: 433784}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5002628
+Rigidbody2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130964}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_FixedAngle: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!61 &6148494
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -83,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25cfc9b8c79e4b2b9b68902e641c83e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Element: 0
-  isClickable: 0
+  Element: 8
+  isClickable: 1
   isAlive: 1
 --- !u!114 &11484918
 MonoBehaviour:
@@ -97,6 +113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6fb338bc6cee4ad596bd8c6df620ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack: 0
+  defence: 8
+  durability: 5
 --- !u!212 &21208906
 SpriteRenderer:
   m_ObjectHideFlags: 1

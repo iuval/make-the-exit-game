@@ -4,7 +4,7 @@ using System.Collections;
 public class Box : MonoBehaviour {
 
 	public ItemsManager.Elements Element;
-	private bool isMoving = false;
+	public bool isMoving = false;
 	private float goToY = 0;
 	private float goToX = 0;
 	public bool isClickable = false;
@@ -23,19 +23,17 @@ public class Box : MonoBehaviour {
 					mov.y -= 0.1f;		
 				} else {
 					mov.y = goToY;
+					isMoving = false;
 				}
 			}
-			if (mov.x != goToX) {
-				if (mov.x - goToX > 0.1f) {
-					mov.x -= 0.1f;		
-				} else {
-					mov.x = goToX;
-				}
-			}
-			if (mov.x == goToX && mov.y == goToY) isMoving = false;
 			transform.position = mov;
-			
-			if (ai && !isMoving) ai.ActionOnLanding();
+		}
+	}
+	
+	void OnCollisionEnter2D(Collision2D coll) {
+		if (coll.collider.name == "Floor" && ai != null) {
+			ai.ActionOnLanding();
+			isMoving = false;
 		}
 	}
 	

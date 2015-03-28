@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class ItemsManager : MonoBehaviour {
-	public enum Elements { None, Iron, Gold, Diamond, Wood, Enemy, Lock };
+	public enum Elements { None, Iron, Gold, Diamond, Wood, Enemy, Lock, Weapon, Helmet };
 	
 	public static ItemsManager instance;
 	
@@ -21,6 +21,8 @@ public class ItemsManager : MonoBehaviour {
 	private float rareWhen = .97f;
 	private float specialWhen = .85f;
 	private float commonWhen = .5f;
+	
+	public Dude dude;
 	
 	// Input
 	public static RuntimePlatform platform = Application.platform;
@@ -45,7 +47,7 @@ public class ItemsManager : MonoBehaviour {
 	
 	// Consumables
 	private ArrayList bonuses = new ArrayList();
-	private ArrayList consumablesToKill = new ArrayList();
+	private ArrayList bonusesToKill = new ArrayList();
 	
 	void Start () {
 		InitWall();
@@ -57,6 +59,15 @@ public class ItemsManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		CheckInput();
+		if (bonusesToKill.Count > 0) {
+			foreach (Box box in bonusesToKill) {
+				if (!box.isAlive) {
+					GameObject.Destroy(box);
+				}
+				bonuses.Remove(box);
+			}
+			bonusesToKill.Clear();
+		}
 	}
 	
 	private void InitWall() {
@@ -116,7 +127,7 @@ public class ItemsManager : MonoBehaviour {
 	
 	public GameObject CreateBonus(GameObject prefav, Vector2 pos) {
 		GameObject bonus = CreateDrop(prefav, pos);
-		bonuses.Add(bonus.GetComponent<Box>());
+		bonuses.Insert(0, bonus.GetComponent<Box>());
 		return bonus;
 	}
 	
@@ -145,25 +156,26 @@ public class ItemsManager : MonoBehaviour {
 		return result;
 	}
 	
-	private void CheckForFigures() {
-	
+	public void killBonus(Box box) {
+		bonusesToKill.Add(box);
 	}
 	
 	private void OnPress(Vector2 position) {
 		selectdBoxPos = BoxCoordsAtPosition(position);
 		foreach (Box box in bonuses) {
 			if (box.gameObject.GetComponent<BoxCollider2D>().OverlapPoint(position)) {
-				box.isAlive = false;
-			}
-			if (!box.isAlive) {
-				consumablesToKill.Add(box);
+				box.isClickable = false;
+				box.isMoving = false;
+				bonusesToKill.Add(box);
+				Destroy(box.GetComponent<BoxCollider2D>());
+				Destroy(box.GetComponent<Rigidbody2D>());
+				if (box.Element == Elements.Weapon) {
+					dude.setWeapon(box);
+				} else if (box.Element == Elements.Helmet) {
+					dude.setHelmet(box);
+				}
 			}
 		}
-		foreach (Box box in consumablesToKill) {
-			bonuses.Remove(box);
-			GameObject.Destroy(box.gameObject);
-		}
-		consumablesToKill.Clear();
 	}
 	
 	private void OnDrag(Vector2 position) {

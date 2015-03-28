@@ -8,6 +8,10 @@ public class DropEnemy : DropAI {
 	
 	private bool doAction = false;
 	
+	public int attack;
+	public int defence;
+	public int life;
+	
 	void Start() {
 		player = GameObject.Find("Dude");
 		playerTransform = player.transform;

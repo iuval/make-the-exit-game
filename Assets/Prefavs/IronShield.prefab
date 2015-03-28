@@ -11,6 +11,7 @@ GameObject:
   - 61: {fileID: 6164826}
   - 114: {fileID: 11423882}
   - 114: {fileID: 11400158}
+  - 50: {fileID: 5006122}
   m_Layer: 0
   m_Name: IronShield
   m_TagString: Untagged
@@ -53,12 +54,27 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 436378}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5006122
+Rigidbody2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153594}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_FixedAngle: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!61 &6164826
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -83,6 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6fb338bc6cee4ad596bd8c6df620ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack: 0
+  defence: 3
+  durability: 10
 --- !u!114 &11423882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,8 +113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25cfc9b8c79e4b2b9b68902e641c83e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Element: 0
-  isClickable: 0
+  Element: 8
+  isMoving: 0
+  isClickable: 1
   isAlive: 1
 --- !u!212 &21295720
 SpriteRenderer:

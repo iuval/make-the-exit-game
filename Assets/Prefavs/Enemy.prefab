@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11450674}
   - 114: {fileID: 11486070}
   - 61: {fileID: 6188400}
+  - 50: {fileID: 5019644}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -31,6 +32,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5019644
+Rigidbody2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178306}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_FixedAngle: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!61 &6188400
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -56,6 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Element: 0
+  isMoving: 0
   isClickable: 0
   isAlive: 1
 --- !u!114 &11486070
@@ -69,6 +86,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d9678d9d7dc49a9a747c4a0efd4a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack: 2
+  defence: 2
+  life: 10
 --- !u!212 &21276306
 SpriteRenderer:
   m_ObjectHideFlags: 1
