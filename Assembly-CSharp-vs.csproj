@@ -59,6 +59,7 @@
      <Compile Include="Assets\Facebook\Scripts\IOSFacebook.cs" />
      <Compile Include="Assets\Facebook\Scripts\IOSFacebookLoader.cs" />
      <Compile Include="Assets\Facebook\Scripts\NativeDialogModes.cs" />
+     <Compile Include="Assets\Scripts\Background.cs" />
      <Compile Include="Assets\Scripts\Box.cs" />
      <Compile Include="Assets\Scripts\DropAI\DropAI.cs" />
      <Compile Include="Assets\Scripts\DropAI\DropBonus.cs" />
@@ -67,7 +68,9 @@
      <Compile Include="Assets\Scripts\Effects\DropEffect.cs" />
      <Compile Include="Assets\Scripts\Effects\Effect.cs" />
      <Compile Include="Assets\Scripts\Effects\NewBoxEffect.cs" />
+     <Compile Include="Assets\Scripts\EnemyManager.cs" />
      <Compile Include="Assets\Scripts\Figures.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\ItemsManager.cs" />
      <None Include="Assets\Plugins\Android\facebook\proguard-project.txt" />
      <None Include="Assets\Plugins\Android\facebook\bin\R.txt" />

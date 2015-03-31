@@ -5,11 +5,12 @@ public class Box : MonoBehaviour {
 
 	public ItemsManager.Elements Element;
 	public bool isMoving = false;
-	private float goToY = 0;
-	private float goToX = 0;
 	public bool isClickable = false;
+	public float dropSpeed = 0.2f;
 	public bool isAlive = true;
-	private DropAI ai;
+	
+	DropAI ai;
+	Vector2 goTo;
 	
 	void Start () {
 		ai = GetComponent<DropAI>();
@@ -17,34 +18,22 @@ public class Box : MonoBehaviour {
 
 	void Update () {
 		if (isMoving) {
-			Vector2 mov = transform.position;
-			if (mov.y != goToY)	{
-				if (mov.y - goToY > 0.1f) {
-					mov.y -= 0.1f;		
-				} else {
-					mov.y = goToY;
-					isMoving = false;
-				}
+			transform.position = Vector2.MoveTowards(transform.position, goTo, dropSpeed * Time.deltaTime);
+			if(Vector2.Distance(transform.position, goTo) <= 0.01f) {
+				if (ai) ai.ActionOnLanding();
+				transform.position = goTo;
+				isMoving = false;
 			}
-			transform.position = mov;
 		}
 	}
-	
-	void OnCollisionEnter2D(Collision2D coll) {
-		if (coll.collider.name == "Floor" && ai != null) {
-			ai.ActionOnLanding();
-			isMoving = false;
-		}
-	}
-	
+
 	public void MoveToY(float y) {
 		MoveTo(transform.position.x, y);
 		isMoving = true;
 	}	
 	
 	public void MoveTo(float x, float y) {
-		goToY = y;
-		goToX = x;
+		goTo = new Vector2(x, y);
 		isMoving = true;
 	}
 }

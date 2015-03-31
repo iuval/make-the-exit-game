@@ -34,13 +34,13 @@ public abstract class Effect {
 				}
 			}
 		}
-		Debug.Log("Checking for:" + pattern.Length + " -> " + matchCount);
+//		Debug.Log("Checking for:" + pattern.Length + " -> " + matchCount);
 		if (pattern.Length == matchCount) {
-			string outt = "";
-			foreach (ItemsManager.Elements el in pattern) {
-				outt += el;
-			}
-			Debug.Log(outt);
+//			string outt = "";
+//			foreach (ItemsManager.Elements el in pattern) {
+//				outt += el;
+//			}
+//			Debug.Log(outt);
 			DoEffect(positions);
 			return true;
 		}

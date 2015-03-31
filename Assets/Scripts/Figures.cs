@@ -8,48 +8,127 @@ public class Figures : MonoBehaviour {
 	
 	public GameObject padlockPrefav;
 	public GameObject doorPrefav;
+	
+	// Swords
 	public GameObject ironSwordPrefav;
 	public GameObject goldSwordPrefav;
 	public GameObject diamonSwordPrefav;
+//	public GameObject diamonSwordPrefav;
+	
+	// Shields
 	public GameObject ironShieldPrefav;
 	public GameObject goldShieldPrefav;
-	public GameObject diamonShieldPrefav;
+	public GameObject diamShieldPrefav;
+	
+	public GameObject treasurePrefav;
 	
 	public void Init(GameObject[,] all) {
 		this.all = all;
 		effects = new Effect[] {
             // Lock
 			new NewBoxEffect(all,
-				new ItemsManager.Elements[] { ItemsManager.Elements.Iron, ItemsManager.Elements.Iron, ItemsManager.Elements.Iron },
-				padlockPrefav),
-            // Door
-			new DropEffect(all,
-				new ItemsManager.Elements[] { ItemsManager.Elements.Wood, ItemsManager.Elements.Lock },
-				doorPrefav),
+				new ItemsManager.Elements[] { 
+					ItemsManager.Elements.Iron, ItemsManager.Elements.Iron, ItemsManager.Elements.Iron
+				}, padlockPrefav),
+			// Lock
+			new NewBoxEffect(all,
+				new ItemsManager.Elements[] {
+					ItemsManager.Elements.Gold, ItemsManager.Elements.Gold, ItemsManager.Elements.Gold
+				}, padlockPrefav),
+			// Treasure
+			new NewBoxEffect(all,
+                new ItemsManager.Elements[] {
+                	ItemsManager.Elements.Gold, ItemsManager.Elements.Gold,
+                	ItemsManager.Elements.Lock,
+                	ItemsManager.Elements.Wood
+				}, treasurePrefav),
+// DEBUG -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Treasure
+			new NewBoxEffect(all,
+	             new ItemsManager.Elements[] {
+				ItemsManager.Elements.Iron, ItemsManager.Elements.Gold
+				}, treasurePrefav),
+			// Treasure
+			new NewBoxEffect(all,
+                 new ItemsManager.Elements[] {
+					ItemsManager.Elements.Diam, ItemsManager.Elements.Diam,
+					ItemsManager.Elements.Lock,
+					ItemsManager.Elements.Wood
+				}, treasurePrefav),
+			// Treasure
+			new NewBoxEffect(all,
+				new ItemsManager.Elements[] {
+					ItemsManager.Elements.Diam,
+					ItemsManager.Elements.Gold,
+					ItemsManager.Elements.Lock,
+					ItemsManager.Elements.Wood
+				}, treasurePrefav),
             // Iron Sword
-			new DropEffect(all,
-				new ItemsManager.Elements[] { ItemsManager.Elements.Wood, ItemsManager.Elements.Iron, ItemsManager.Elements.Iron },
-				ironSwordPrefav),
-            // Gold Shield
-			new DropEffect(all,
-				new ItemsManager.Elements[] { ItemsManager.Elements.Wood, ItemsManager.Elements.Wood , ItemsManager.Elements.Iron },
-				ironShieldPrefav),
+			new NewBoxEffect(all,
+				new ItemsManager.Elements[] {
+					ItemsManager.Elements.Wood,
+					ItemsManager.Elements.Iron, ItemsManager.Elements.Iron 
+				}, ironSwordPrefav),
+			// Upgrade Iron Sword -> Gold Sword
+			new NewBoxEffect(all,
+                 new ItemsManager.Elements[] {
+					ItemsManager.Elements.IronSword,
+					ItemsManager.Elements.Gold
+				}, goldSwordPrefav),
+            // Iron Shield
+			new NewBoxEffect(all,
+				new ItemsManager.Elements[] {
+					ItemsManager.Elements.Wood, ItemsManager.Elements.Wood,
+					ItemsManager.Elements.Iron 
+				}, ironShieldPrefav),
+			// Upgrade Iron Shield -> Gold Shield
+			new NewBoxEffect(all,
+                new ItemsManager.Elements[] {
+					ItemsManager.Elements.IronShield,
+					ItemsManager.Elements.Gold
+				}, goldShieldPrefav),
 			// Gold Sword
-			new DropEffect(all,
-				new ItemsManager.Elements[] { ItemsManager.Elements.Wood, ItemsManager.Elements.Gold, ItemsManager.Elements.Gold },
-				goldSwordPrefav),
+			new NewBoxEffect(all,
+				new ItemsManager.Elements[] {
+					ItemsManager.Elements.Iron,
+					ItemsManager.Elements.Gold, ItemsManager.Elements.Gold
+				}, goldSwordPrefav),
+			// Upgrade Gold Sword -> Diam Shield
+			new NewBoxEffect(all,
+                new ItemsManager.Elements[] {
+					ItemsManager.Elements.GoldSword,
+					ItemsManager.Elements.Diam
+				}, diamonSwordPrefav),
 			// Gold Shield
-			new DropEffect(all,
-				new ItemsManager.Elements[] { ItemsManager.Elements.Wood, ItemsManager.Elements.Wood , ItemsManager.Elements.Gold },
-				goldShieldPrefav),
+			new NewBoxEffect(all,
+				new ItemsManager.Elements[] {
+					ItemsManager.Elements.Iron, ItemsManager.Elements.Iron,
+					ItemsManager.Elements.Gold
+				}, goldShieldPrefav),
+			// Upgrade Gold Shield -> Diam Shield
+			new NewBoxEffect(all,
+            	new ItemsManager.Elements[] {
+					ItemsManager.Elements.GoldShield,
+					ItemsManager.Elements.Diam
+				}, diamShieldPrefav),
 			// Diam Sword
+			new NewBoxEffect(all,
+               	new ItemsManager.Elements[] {
+					ItemsManager.Elements.Gold,
+               		ItemsManager.Elements.Diam, ItemsManager.Elements.Diam
+               	}, diamonSwordPrefav),
+			// Diam Shield
+			new NewBoxEffect(all,
+	  		    new ItemsManager.Elements[] {
+					ItemsManager.Elements.Gold, ItemsManager.Elements.Gold,
+	  		    	ItemsManager.Elements.Diam
+				}, diamShieldPrefav),
+			// Door
 			new DropEffect(all,
-               	new ItemsManager.Elements[] { ItemsManager.Elements.Wood, ItemsManager.Elements.Diamond, ItemsManager.Elements.Diamond },
-				diamonSwordPrefav),
-			// Gold Shield
-			new DropEffect(all,
-	  		    new ItemsManager.Elements[] { ItemsManager.Elements.Wood, ItemsManager.Elements.Wood , ItemsManager.Elements.Diamond },
-				diamonShieldPrefav)
+				new ItemsManager.Elements[] {
+					ItemsManager.Elements.Wood, ItemsManager.Elements.Wood, ItemsManager.Elements.Wood,
+					ItemsManager.Elements.Iron, ItemsManager.Elements.Iron, ItemsManager.Elements.Iron,
+					ItemsManager.Elements.Lock, ItemsManager.Elements.Lock, ItemsManager.Elements.Lock
+				}, doorPrefav)
         };
 	}
 	
@@ -58,19 +137,18 @@ public class Figures : MonoBehaviour {
 		foreach (Effect effect in effects) {
 			check |= effect.LookForMatches(positions);
 			if (check) {
-				Debug.Log("FOUND!!");
+//				Debug.Log("FOUND!!");
 				break;
 			} 
 		}
 		if (!check) {
 			foreach (Vector2 vec in positions) {
-				Debug.Log("Kill: " + vec);
-				Box box = this.all[(int)vec.x, (int)vec.y].GetComponent<Box>();
-				
-				ItemsManager.instance.CreateEnemy(box.gameObject.transform.position);
-				GameObject.Destroy(box.gameObject);
+				GameManager.items.CreateEnemy(this.all[(int)vec.x, (int)vec.y].transform.position);
+				Destroy(this.all[(int)vec.x, (int)vec.y]);
 				this.all[(int)vec.x, (int)vec.y] = null;
-				ItemsManager.instance.CreateBoxAtX((int)vec.x);
+			}
+			foreach (Vector2 vec in positions) {
+				GameManager.items.CreateBoxAtX((int)vec.x);
 			}
 		}
 	}
