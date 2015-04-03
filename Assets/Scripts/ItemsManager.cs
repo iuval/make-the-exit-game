@@ -17,9 +17,12 @@ public class ItemsManager : MonoBehaviour
 		IronShield,
 		GoldShield,
 		DiamShield,
-		Treasure 
+		Treasure,
+		Food,
+		Heart
 	};
 
+	public GameObject food;
 	public GameObject[] commons;
 	public GameObject[] specials;
 	public GameObject[] rares;
@@ -33,6 +36,7 @@ public class ItemsManager : MonoBehaviour
 	public float legendaryWhen;
 	public float rareWhen;
 	public float specialWhen;
+	public float foodWhen;
 	public Dude dude;
 	
 	// Input
@@ -68,14 +72,25 @@ public class ItemsManager : MonoBehaviour
 		figures = GetComponent<Figures> ();
 	}
 	
-	public void Init() {
+	public void LoadLevel(int level) {
 		InitWall ();
 		figures.Init (all);
 	}
 	
+	public void Clear() {
+		for (int i = 0; i < itemsCountH; i++) {
+			for (int j = 0; j < itemsCountV; j++) {
+				Destroy(all [i, j]);
+				all [i, j] = null;
+			}
+		}	
+	}	
+	
 	// Update is called once per frame
 	void Update ()
 	{
+		if (!GameManager.instance.isPlaying) return;
+		
 		CheckInput ();
 		if (bonusesToKill.Count > 0) {
 			foreach (Box box in bonusesToKill) {
@@ -93,7 +108,7 @@ public class ItemsManager : MonoBehaviour
 		all = new GameObject[itemsCountH, itemsCountV];
 		for (int i = 0; i < itemsCountH; i++) {
 			for (int j = 0; j < itemsCountV; j++) {
-				all [i, j] = CreateBoxWithPrefav ();
+				all [i, j] = CreateRandomBox ();
 				all [i, j].transform.parent = transform;
 				all [i, j].transform.position = new Vector2 (initX + itemSide * i, initY + itemSide * j);
 			}
@@ -123,7 +138,7 @@ public class ItemsManager : MonoBehaviour
 		for (int j = freeYCoun; j > 0; j --) {
 			newY = itemsCountV - j;
 			if (InBoard (x, newY)) {
-				all [x, newY] = CreateBoxWithPrefav ();
+				all [x, newY] = CreateRandomBox ();
 				all [x, newY].transform.parent = transform;
 				all [x, newY].transform.position = new Vector2 (initX + itemSide * x, 5 + initY + itemSide * newY);
 				all [x, newY].GetComponent<Box> ().MoveToY (initY + itemSide * newY);
@@ -163,7 +178,7 @@ public class ItemsManager : MonoBehaviour
 		return newBox;
 	}
 	
-	private GameObject CreateBoxWithPrefav ()
+	private GameObject CreateRandomBox ()
 	{
 		GameObject result;
 		
@@ -175,6 +190,8 @@ public class ItemsManager : MonoBehaviour
 			result = (GameObject)(GameObject.Instantiate (rares [Random.Range (0, rares.Length)]));
 		} else if (ran > specialWhen) {
 			result = (GameObject)(GameObject.Instantiate (specials [Random.Range (0, specials.Length)]));
+		} else if (ran > foodWhen) {
+			result = GameObject.Instantiate (food) as GameObject;
 		} else {
 			result = (GameObject)(GameObject.Instantiate (commons [Random.Range (0, commons.Length)]));
 		}
@@ -213,6 +230,7 @@ public class ItemsManager : MonoBehaviour
 	
 	private void OnEndDrag (Vector2 position)
 	{
+		selectedPositions.Reverse();
 		figures.Check (selectedPositions);
 		selectedPositions.Clear ();
 		isDragging = false;
@@ -228,12 +246,17 @@ public class ItemsManager : MonoBehaviour
 			Box box = all [(int)onReleasePos.x, (int)onReleasePos.y].GetComponent<Box>();
 			if (box.isClickable) {
 				box.isMoving = false;
-				bonusesToKill.Add (box);
 				if (box.Element == Elements.IronSword || box.Element == Elements.GoldSword || box.Element == Elements.DiamSword) {
 					dude.SetWeapon (box);
 				} else if (box.Element == Elements.IronShield || box.Element == Elements.GoldShield || box.Element == Elements.DiamShield) {
 					dude.SetArmor (box);
-				}
+				} else if (box.Element == Elements.Food) {
+					dude.AddLife(box.GetComponent<Bonus>().life);
+					Destroy(all [(int)onReleasePos.x, (int)onReleasePos.y]);
+				} else if (box.Element == Elements.Treasure) {
+					GameManager.instance.AddGold(box.GetComponent<Bonus>().gold);
+					Destroy(all [(int)onReleasePos.x, (int)onReleasePos.y]);
+				}		
 				all [(int)onReleasePos.x, (int)onReleasePos.y] = null;
 				GameManager.items.CreateBoxAtX((int)onReleasePos.x);
 			}

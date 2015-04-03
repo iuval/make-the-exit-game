@@ -12,7 +12,7 @@ public class Dude : MonoBehaviour
 	public int attack;
 	public float health;
 	public float speed;
-	public float hitSpeed;
+	public float timeBetweenHits;
 	public DropEnemy target;
 	
 	public Image armorImage;
@@ -21,36 +21,43 @@ public class Dude : MonoBehaviour
 	public Slider weaponSlider;
 	
 	float currentHealth;
-	DropBonus weapon;
-	DropBonus armor;
-	float timeToHit;
+	Bonus weapon;
+	Bonus armor;
+	float remainingTimeToHit;
 	bool closeToTarget = false;
 	
-	public void Init ()
+	public void Load ()
 	{
+		transform.position = new Vector2(0, -3.5f);
 		currentHealth = health;
 		healthSlier.value = 1;
 	}
+	
+	public bool IsAlive () {
+		return currentHealth >= 0;
+	}
+	
+	public void Clear() {
+		SetWeapon(null);
+		SetArmor(null);
+	}	
 
 	void Update ()
 	{
-		if (armor) 
+		if (!GameManager.instance.isPlaying) return;
+		
 	 	if (armor != null && armor.IsBroken()) {
-			defence -= armor.defence;
 			SetArmor(null);
-			Destroy (armor.gameObject);
 		}
 		if (weapon != null && weapon.IsBroken()) {
-			attack -= weapon.attack;
 			SetWeapon(null);
-			Destroy (weapon.gameObject);
 		}
 		
 		if (target != null) {
 			if (closeToTarget) {
-				timeToHit -= Time.deltaTime;
-				if (timeToHit <= 0) {
-					timeToHit = hitSpeed;
+				remainingTimeToHit -= Time.deltaTime;
+				if (remainingTimeToHit <= 0) {
+					remainingTimeToHit = timeBetweenHits;
 					target.GetHit (attack);
 					if (target.currentHealth <= 0) {
 						GameManager.enemies.KillEnemy (target.gameObject);
@@ -60,7 +67,7 @@ public class Dude : MonoBehaviour
 					
 					if (weapon != null) {
 						weapon.Use ();
-						weaponSlider.value = weapon.DurabilityInPer();
+						weaponSlider.value = weapon.DurabilityInPer ();
 					}
 				}
 			} else {
@@ -85,6 +92,16 @@ public class Dude : MonoBehaviour
 		}
 	}
 	
+	void UpdateHealthBar () {
+		healthSlier.value = currentHealth / health;
+	}
+	
+	public void AddLife (float percentage)
+	{
+		currentHealth +=  (percentage * health) / 100;
+		UpdateHealthBar ();
+	}
+	
 	public void GetHit (int damage)
 	{
 		damage -= defence;
@@ -95,7 +112,7 @@ public class Dude : MonoBehaviour
 			armor.Use ();	
 			armorSlider.value = armor.DurabilityInPer();
 		}
-		healthSlier.value = currentHealth / health;
+		UpdateHealthBar ();
 	}
 	
 	public void SetArmor (Box bonus)
@@ -104,14 +121,14 @@ public class Dude : MonoBehaviour
 			defence -= armor.defence;
 			Destroy (armor.gameObject);
 		}
-		
 		if (bonus != null) {
-			armor = bonus.GetComponent<DropBonus> ();
+			armor = bonus.GetComponent<Bonus> ();
 			armor.gameObject.transform.parent = transform;
 			armor.gameObject.transform.rotation = Quaternion.identity;
 			Vector3 pos = transform.position + (Vector3)helmetPosition;
 			pos.z = -3;
 			armor.gameObject.transform.position = pos;
+			
 			defence += armor.defence;
 			armorImage.sprite = armor.GetComponentInChildren<SpriteRenderer>().sprite;
 			armorSlider.value = armor.DurabilityInPer();
@@ -119,6 +136,7 @@ public class Dude : MonoBehaviour
 		} else {
 			armorImage.sprite = null;
 			armorImage.color = Color.black;
+			armorSlider.value = 0;
 		}
 	}
 	
@@ -128,14 +146,14 @@ public class Dude : MonoBehaviour
 			attack -= weapon.attack;
 			Destroy (weapon.gameObject);
 		}
-		
 		if (bonus != null) {
-			weapon = bonus.GetComponent<DropBonus> ();
+			weapon = bonus.GetComponent<Bonus> ();
 			weapon.gameObject.transform.parent = transform;
 			weapon.gameObject.transform.rotation = Quaternion.identity;
 			Vector3 pos = transform.position + (Vector3)weaponPosition;
 			pos.z = -3;
 			weapon.gameObject.transform.position = pos;
+			
 			attack += weapon.attack;
 			weaponImage.sprite = weapon.GetComponentInChildren<SpriteRenderer>().sprite;
 			weaponSlider.value = weapon.DurabilityInPer();
@@ -143,6 +161,7 @@ public class Dude : MonoBehaviour
 		} else {
 			weaponImage.sprite = null;
 			weaponImage.color = Color.black;
+			weaponSlider.value = 0;
 		}
 	}
 }

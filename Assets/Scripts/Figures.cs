@@ -12,7 +12,7 @@ public class Figures : MonoBehaviour {
 	// Swords
 	public GameObject ironSwordPrefav;
 	public GameObject goldSwordPrefav;
-	public GameObject diamonSwordPrefav;
+	public GameObject diamSwordPrefav;
 //	public GameObject diamonSwordPrefav;
 	
 	// Shields
@@ -21,10 +21,16 @@ public class Figures : MonoBehaviour {
 	public GameObject diamShieldPrefav;
 	
 	public GameObject treasurePrefav;
+	public GameObject heartPrefav;
 	
 	public void Init(GameObject[,] all) {
 		this.all = all;
 		effects = new Effect[] {
+			// Heart
+			new NewBoxEffect(all,
+            	new ItemsManager.Elements[] {
+				ItemsManager.Elements.Food, ItemsManager.Elements.Food, ItemsManager.Elements.Food
+			}, heartPrefav),
             // Lock
 			new NewBoxEffect(all,
 				new ItemsManager.Elements[] { 
@@ -43,10 +49,10 @@ public class Figures : MonoBehaviour {
                 	ItemsManager.Elements.Wood
 				}, treasurePrefav),
 // DEBUG -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Treasure
-			new NewBoxEffect(all,
-	             new ItemsManager.Elements[] {
-				ItemsManager.Elements.Iron, ItemsManager.Elements.Gold
-				}, treasurePrefav),
+//			new NewBoxEffect(all,
+//	             new ItemsManager.Elements[] {
+//				ItemsManager.Elements.Iron, ItemsManager.Elements.Gold
+//				}, treasurePrefav),
 			// Treasure
 			new NewBoxEffect(all,
                  new ItemsManager.Elements[] {
@@ -97,7 +103,7 @@ public class Figures : MonoBehaviour {
                 new ItemsManager.Elements[] {
 					ItemsManager.Elements.GoldSword,
 					ItemsManager.Elements.Diam
-				}, diamonSwordPrefav),
+				}, diamSwordPrefav),
 			// Gold Shield
 			new NewBoxEffect(all,
 				new ItemsManager.Elements[] {
@@ -115,7 +121,7 @@ public class Figures : MonoBehaviour {
                	new ItemsManager.Elements[] {
 					ItemsManager.Elements.Gold,
                		ItemsManager.Elements.Diam, ItemsManager.Elements.Diam
-               	}, diamonSwordPrefav),
+               	}, diamSwordPrefav),
 			// Diam Shield
 			new NewBoxEffect(all,
 	  		    new ItemsManager.Elements[] {

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
 	
 	float time;
 	int level;
+	int gold;
 	
 	void Awake() {
 		instance = this;
@@ -31,10 +32,15 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (isPlaying) {
-			time += Time.deltaTime;
-			
-			SetTime();
+		if (!GameManager.instance.isPlaying) return;
+		
+		time += Time.deltaTime;
+		
+		SetTime();
+		
+		if (!dude.IsAlive()) {
+			EndGame();
+			InitGame();
 		}
 	}
 	
@@ -44,15 +50,23 @@ public class GameManager : MonoBehaviour {
 		
 		level = 1;
 		
-		items.Init();
-		enemies.Init(level);
-		dude.Init();
+		items.LoadLevel(level);
+		enemies.LoadLevel(level);
+		dude.Load();
 		
 		goldText.text = "0";
 		
 		isPlaying = true;
 	}
 	
+	
+	void EndGame() {
+		isPlaying = false;
+		enemies.Clear();
+		items.Clear();
+		dude.Clear();
+	}
+
 	void SetTime() {
 		int secs = (int)(time % 60);
 		int mins = (int)(time / 60);
@@ -64,5 +78,14 @@ public class GameManager : MonoBehaviour {
 		timeStr += secs.ToString();
 		
 		timeText.text = timeStr;
+	}
+	
+	void SetGold() {
+		goldText.text = gold.ToString();
+	}
+	
+	public void AddGold(int amount) {
+		gold += amount;
+		SetGold();
 	}
 }

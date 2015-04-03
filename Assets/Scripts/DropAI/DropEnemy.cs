@@ -50,6 +50,8 @@ public class DropEnemy : DropAI {
 	}
 
 	void Update() {
+		if (!GameManager.instance.isPlaying) return;
+		
 		if (doAction) {
 			if (closeToDude) {
 				timeToHit -= Time.deltaTime;

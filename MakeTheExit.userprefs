@@ -1,11 +1,17 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Dude.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Background.cs">
     <Files>
-      <File FileName="Assets/Scripts/ItemsManager.cs" Line="196" Column="4" />
-      <File FileName="Assets/Scripts/EnemyManager.cs" Line="36" Column="3" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="3" Column="22" />
-      <File FileName="Assets/Scripts/Dude.cs" Line="36" Column="1" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="89" Column="13" />
+      <File FileName="Assets/Scripts/EnemyManager.cs" Line="76" Column="39" />
+      <File FileName="Assets/Scripts/DropAI/DropEnemy.cs" Line="45" Column="21" />
+      <File FileName="Assets/Scripts/Dude.cs" Line="38" Column="3" />
+      <File FileName="Assets/Scripts/Box.cs" Line="15" Column="2" />
+      <File FileName="Assets/Scripts/Figures.cs" Line="55" Column="13" />
+      <File FileName="Assets/Scripts/DropAI/Bonus.cs" Line="19" Column="3" />
+      <File FileName="Assets/Scripts/Effects/NewBoxEffect.cs" Line="16" Column="21" />
+      <File FileName="Assets/Scripts/ItemsManager.cs" Line="234" Column="35" />
+      <File FileName="Assets/Scripts/Background.cs" Line="27" Column="52" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

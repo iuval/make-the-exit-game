@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25cfc9b8c79e4b2b9b68902e641c83e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  srites: []
   Element: 12
   isMoving: 0
   isClickable: 1
@@ -96,7 +97,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 175060}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6fb338bc6cee4ad596bd8c6df620ba8, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d3b4c9dee04d4e7faf19defce9b2a89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 0

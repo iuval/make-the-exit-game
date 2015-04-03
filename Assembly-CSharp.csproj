@@ -61,8 +61,8 @@
      <Compile Include="Assets\Facebook\Scripts\NativeDialogModes.cs" />
      <Compile Include="Assets\Scripts\Background.cs" />
      <Compile Include="Assets\Scripts\Box.cs" />
+     <Compile Include="Assets\Scripts\DropAI\Bonus.cs" />
      <Compile Include="Assets\Scripts\DropAI\DropAI.cs" />
-     <Compile Include="Assets\Scripts\DropAI\DropBonus.cs" />
      <Compile Include="Assets\Scripts\DropAI\DropEnemy.cs" />
      <Compile Include="Assets\Scripts\Dude.cs" />
      <Compile Include="Assets\Scripts\Effects\DropEffect.cs" />

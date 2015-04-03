@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Box : MonoBehaviour {
-
+public class Box : MonoBehaviour
+{
+	public Sprite[] srites;
 	public ItemsManager.Elements Element;
 	public bool isMoving = false;
 	public bool isClickable = false;
@@ -14,6 +15,8 @@ public class Box : MonoBehaviour {
 	
 	void Start () {
 		ai = GetComponent<DropAI>();
+		if (srites.Length > 0)
+			GetComponentInChildren<SpriteRenderer>().sprite = srites[Random.Range(0, srites.Length)];
 	}
 
 	void Update () {
