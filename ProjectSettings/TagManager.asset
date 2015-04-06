@@ -48,3 +48,6 @@ TagManager:
   - name: Things
     uniqueID: 3394312231
     locked: 0
+  - name: Dude
+    uniqueID: 523023155
+    locked: 0

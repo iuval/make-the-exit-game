@@ -59,13 +59,18 @@ public class ItemsManager : MonoBehaviour
 															  new int[] {  0,  1 }                       };
 														  
 	// Figures
-	private Figures figures;
+	Figures figures;
+	int foodCount;
+	int commonsCount;
+	int specialsCount;
+	int raresCount;
+	int legendariesCount;
 	
 	// Consumables
-	private ArrayList bonuses = new ArrayList ();
-	private ArrayList bonusesToKill = new ArrayList ();
+	ArrayList bonuses = new ArrayList ();
+	ArrayList bonusesToKill = new ArrayList ();
 	
-	public GameObject enemyPrefav;
+	int level;
 	
 	void Awake ()
 	{
@@ -73,17 +78,19 @@ public class ItemsManager : MonoBehaviour
 	}
 	
 	public void LoadLevel(int level) {
+		this.level = level;
 		InitWall ();
-		figures.Init (all);
 	}
 	
 	public void Clear() {
-		for (int i = 0; i < itemsCountH; i++) {
-			for (int j = 0; j < itemsCountV; j++) {
-				Destroy(all [i, j]);
-				all [i, j] = null;
-			}
-		}	
+		if (all != null) {
+			for (int i = 0; i < itemsCountH; i++) {
+				for (int j = 0; j < itemsCountV; j++) {
+					Destroy(all [i, j]);
+					all [i, j] = null;
+				}
+			}	
+		}
 	}	
 	
 	// Update is called once per frame
@@ -153,13 +160,6 @@ public class ItemsManager : MonoBehaviour
 		all [(int)gridPos.x, (int)gridPos.y] = newBox;
 		newBox.transform.position = pos;
 		return newBox;
-	}
-	
-	public GameObject CreateEnemy (Vector2 pos)
-	{
-		GameObject enemey = CreateDrop (enemyPrefav, pos);
-		GameManager.enemies.AddEnemy(enemey);
-		return enemey;
 	}
 	
 	public GameObject CreateDropBonus (GameObject prefav, Vector2 pos)
@@ -261,19 +261,6 @@ public class ItemsManager : MonoBehaviour
 				GameManager.items.CreateBoxAtX((int)onReleasePos.x);
 			}
 		}
-		
-//		foreach (Box box in bonuses) {
-//			if (box.gameObject.GetComponent<BoxCollider2D> ().OverlapPoint (position)) {
-//				box.isClickable = false;
-//				box.isMoving = false;
-//				bonusesToKill.Add (box);
-//				if (box.Element == Elements.IronSword || box.Element == Elements.GoldSword || box.Element == Elements.DiamSword) {
-//					dude.SetWeapon (box);
-//				} else if (box.Element == Elements.IronShield || box.Element == Elements.GoldShield || box.Element == Elements.DiamShield) {
-//					dude.SetArmor (box);
-//				}
-//			}
-//		}
 	}
 		
 	public static bool InBoard (int x, int y)
@@ -283,10 +270,13 @@ public class ItemsManager : MonoBehaviour
 	
 	private Vector2 BoxCoordsAtPosition (Vector2 position)
 	{
-		for (int i = 0; i < itemsCountH; i++) {
-			for (int j = 0; j < itemsCountV; j++) {
+		for (int i = 0; i < itemsCountH; i++)
+		{
+			for (int j = 0; j < itemsCountV; j++)
+			{
 				GameObject box = all [i, j];
-				if (box != null && box.GetComponent<Collider2D> ().OverlapPoint (position)) {
+				if (box != null && box.GetComponent<Collider2D> ().OverlapPoint (position))
+				{
 					return new Vector2 (i, j);
 				}
 			}

@@ -89,6 +89,9 @@ MonoBehaviour:
   isClickable: 1
   dropSpeed: 5
   isAlive: 1
+  patterns:
+  - pattern: 010000000100000002000000
+  - pattern: 0700000002000000
 --- !u!114 &11491544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,6 +106,8 @@ MonoBehaviour:
   attack: 0
   defence: 10
   durability: 50
+  gold: 0
+  life: 0
 --- !u!212 &21287542
 SpriteRenderer:
   m_ObjectHideFlags: 1

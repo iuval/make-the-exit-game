@@ -82,11 +82,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25cfc9b8c79e4b2b9b68902e641c83e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  srites: []
   Element: 2
   isMoving: 0
-  isClickable: 0
+  isClickable: 1
   dropSpeed: 5
   isAlive: 0
+  patterns: []
 --- !u!212 &21242036
 SpriteRenderer:
   m_ObjectHideFlags: 1

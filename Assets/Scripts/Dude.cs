@@ -4,27 +4,34 @@ using UnityEngine.UI;
 
 public class Dude : MonoBehaviour
 {
-
+ 
 	public Vector2 helmetPosition;
-	public Vector2 weaponPosition;
 	public Slider healthSlier;
 	public int defence;
 	public int attack;
 	public float health;
 	public float speed;
 	public float timeBetweenHits;
-	public DropEnemy target;
+	public Enemy target;
 	
 	public Image armorImage;
 	public Slider armorSlider;
 	public Image weaponImage;
 	public Slider weaponSlider;
 	
+	Transform hands;
 	float currentHealth;
 	Bonus weapon;
 	Bonus armor;
 	float remainingTimeToHit;
 	bool closeToTarget = false;
+	bool facingRight = true;
+	Animator anim;
+	
+	void Awake () {
+		anim = GetComponent<Animator> ();
+		hands = GameObject.Find("hands").transform;
+	}
 	
 	public void Load ()
 	{
@@ -57,10 +64,20 @@ public class Dude : MonoBehaviour
 			if (closeToTarget) {
 				remainingTimeToHit -= Time.deltaTime;
 				if (remainingTimeToHit <= 0) {
+					if (weapon != null) {
+						anim.SetTrigger("weapon_hit");
+					} else {
+						if (target.low) {
+							anim.SetTrigger("low_hit");
+						} else {
+							anim.SetTrigger("high_hit");
+						}
+					}
 					remainingTimeToHit = timeBetweenHits;
 					target.GetHit (attack);
-					if (target.currentHealth <= 0) {
-						GameManager.enemies.KillEnemy (target.gameObject);
+					
+					if (!target.isAlive) {
+//						GameManager.enemies.KillEnemy (target.gameObject);
 						target = null;
 						closeToTarget = false;
 					}
@@ -71,9 +88,19 @@ public class Dude : MonoBehaviour
 					}
 				}
 			} else {
-				transform.position = Vector2.MoveTowards (transform.position, target.gameObject.transform.position, speed * Time.deltaTime);
+				Vector2 pos = transform.position;
+				Vector2 newPos = Vector2.MoveTowards (pos, target.gameObject.transform.position, speed * Time.deltaTime);
+				if ((newPos.x < pos.x && facingRight) || (newPos.x > pos.x && !facingRight)) {
+					Vector3 theScale = transform.localScale;
+					theScale.x *= -1;
+					transform.localScale = theScale;
+					facingRight = !facingRight;
+				}
+				transform.position = newPos;
+				anim.SetInteger("action", (int)ACTIONS.Walking);
 			}
 		} else {
+			anim.SetInteger("action", (int)ACTIONS.Idle);
 			target = GameManager.enemies.FindClosestEnemy ();
 		}
 	}
@@ -81,7 +108,8 @@ public class Dude : MonoBehaviour
 	void OnTriggerStay2D (Collider2D coll)
 	{
 		if (target != null && !closeToTarget && coll.gameObject == target.gameObject) {
-			closeToTarget = true;
+			closeToTarget = true;			
+			anim.SetInteger("action", (int)ACTIONS.Fighting);
 		}
 	}
 	
@@ -110,7 +138,8 @@ public class Dude : MonoBehaviour
 		}
 		if (armor != null) {
 			armor.Use ();	
-			armorSlider.value = armor.DurabilityInPer();
+			float armorValue = armor.DurabilityInPer();
+			armorSlider.value = armorValue;
 		}
 		UpdateHealthBar ();
 	}
@@ -131,7 +160,8 @@ public class Dude : MonoBehaviour
 			
 			defence += armor.defence;
 			armorImage.sprite = armor.GetComponentInChildren<SpriteRenderer>().sprite;
-			armorSlider.value = armor.DurabilityInPer();
+			float armorValue = armor.DurabilityInPer();
+			armorSlider.value = armorValue;
 			armorImage.color = Color.white;
 		} else {
 			armorImage.sprite = null;
@@ -148,11 +178,8 @@ public class Dude : MonoBehaviour
 		}
 		if (bonus != null) {
 			weapon = bonus.GetComponent<Bonus> ();
-			weapon.gameObject.transform.parent = transform;
-			weapon.gameObject.transform.rotation = Quaternion.identity;
-			Vector3 pos = transform.position + (Vector3)weaponPosition;
-			pos.z = -3;
-			weapon.gameObject.transform.position = pos;
+			weapon.gameObject.transform.parent = hands;
+			weapon.gameObject.transform.position = hands.transform.position;
 			
 			attack += weapon.attack;
 			weaponImage.sprite = weapon.GetComponentInChildren<SpriteRenderer>().sprite;

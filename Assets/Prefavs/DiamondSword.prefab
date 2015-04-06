@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 405380}
@@ -86,6 +86,8 @@ MonoBehaviour:
   attack: 15
   defence: 0
   durability: 30
+  gold: 0
+  life: 0
 --- !u!114 &11481848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,7 +96,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 171878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c25cfc9b8c79e4b2b9b68902e641c83e, type: 3}
+  m_Script: {fileID: 11500000, guid: f5f3327d4efbe48a082d9bc9de70f743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   srites: []
@@ -103,6 +105,9 @@ MonoBehaviour:
   isClickable: 1
   dropSpeed: 5
   isAlive: 1
+  patterns:
+  - pattern: 020000000100000001000000
+  - pattern: 0700000002000000
 --- !u!212 &21254882
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -125,9 +130,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -900655065
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b8e5cdfb5dffd4482979c2a3c056d743, type: 3}
+  m_SortingLayerID: 523023155
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300004, guid: 157d336ca72c749f09c21a2b21c7663e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

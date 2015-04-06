@@ -80,7 +80,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 130964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c25cfc9b8c79e4b2b9b68902e641c83e, type: 3}
+  m_Script: {fileID: 11500000, guid: f5f3327d4efbe48a082d9bc9de70f743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   srites: []
@@ -89,6 +89,9 @@ MonoBehaviour:
   isClickable: 1
   dropSpeed: 5
   isAlive: 1
+  patterns:
+  - pattern: 000000000000000001000000
+  - pattern: 0900000001000000
 --- !u!114 &11484918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,6 +106,8 @@ MonoBehaviour:
   attack: 0
   defence: 8
   durability: 10
+  gold: 0
+  life: 0
 --- !u!212 &21208906
 SpriteRenderer:
   m_ObjectHideFlags: 1

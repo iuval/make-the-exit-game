@@ -2,12 +2,21 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour {
+public enum ACTIONS {
+	Idle = 0,
+	Walking = 1,
+	Fighting = 2
+}
+
+public class GameManager : MonoBehaviour 
+{
 
 	public static GameManager instance;
 	public static ItemsManager items;
 	public static Dude dude;
 	public static EnemyManager enemies;
+	
+	public Menu menu;
 	
 	public Text timeText;
 	public Text goldText;
@@ -27,7 +36,7 @@ public class GameManager : MonoBehaviour {
 	
 	void Start () {
 		isPlaying = false;
-		InitGame();
+		menu.Show();
 	}
 	
 	// Update is called once per frame
@@ -40,7 +49,6 @@ public class GameManager : MonoBehaviour {
 		
 		if (!dude.IsAlive()) {
 			EndGame();
-			InitGame();
 		}
 	}
 	
@@ -59,12 +67,23 @@ public class GameManager : MonoBehaviour {
 		isPlaying = true;
 	}
 	
+	public void NewGame() {
+		ClearGame();
+		menu.Hide();
+		InitGame();
+	}
+	
+	void ClearGame() {
+		menu.Show();
+		
+		enemies.Clear ();
+		items.Clear ();
+		dude.Clear ();
+	}
 	
 	void EndGame() {
 		isPlaying = false;
-		enemies.Clear();
-		items.Clear();
-		dude.Clear();
+		menu.Show();
 	}
 
 	void SetTime() {
