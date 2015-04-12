@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -8,19 +8,30 @@ public class EnemyManager : MonoBehaviour {
 	public Text killsText;
 	public float timeBetweenEnemy;
 	
-	public GameObject dropEnemyPrefav;
-	public GameObject commEnemyPrefav;
-	public GameObject ironEnemyPrefav;
-	public GameObject goldEnemyPrefav;
-	public GameObject diamEnemyPrefav;
+	public GameObject ratPrefav;
+	public GameObject zomPrefav;
+	public GameObject skePrefav;
+	public GameObject vamPrefav;
+	
+	public int maxDeadEnemies = 50;
+	int lastDeadEnemyIndex;
+	
+	List<Enemies> enemiesToSpawn;
+	List<Enemies> bossesToSpawn;
+	int enemyIndex;
+	int bossIndex;
+	
+	public Transform floor;
 	
 	int kills;
 	int killsInThisLevel;
-	ArrayList enemies = new ArrayList ();
-	ArrayList enemiesToKill = new ArrayList ();
+	List<GameObject> enemies = new List<GameObject> ();
+	GameObject[] deadEnemies;
 	float remainingTime;
 	
 	void Start () {
+		deadEnemies = new GameObject[maxDeadEnemies];
+		lastDeadEnemyIndex = 0;
 		remainingTime = timeBetweenEnemy * Random.Range(0.8f, 1.2f);
 	}
 	
@@ -32,26 +43,26 @@ public class EnemyManager : MonoBehaviour {
 			CreateEnemy();
 			remainingTime = timeBetweenEnemy * Random.Range(0.8f, 1.2f);
 		}
-			
-		if (enemiesToKill.Count > 0) {
-			foreach (GameObject ene in enemiesToKill) {
-				GameObject.Destroy (ene);
-				enemies.Remove (ene);
-			}
-			enemiesToKill.Clear ();
-		}
 	}
-	
+
 	public void Clear() {
 		for (int i = 0;i < enemies.Count; i++) {
 			Destroy(enemies[i] as GameObject);
 		} 
+		for (int i = 0;i < deadEnemies.Length; i++) {
+			Destroy(deadEnemies[i]);
+		} 
 		enemies.Clear();
+		deadEnemies = new GameObject[maxDeadEnemies];
 	}
 	
 	void AddKills() {
 		kills ++;
 		ShowKills();
+		
+		if (kills == killsInThisLevel) {
+			GameManager.instance.killedAll = true;
+		}
 	}
 	
 	void ShowKills() {
@@ -59,23 +70,70 @@ public class EnemyManager : MonoBehaviour {
 	}
 	
 	void CreateEnemy() {
-		GameObject enemy = (GameObject)GameObject.Instantiate (commEnemyPrefav);
+		GameObject enemy = null;
+		
+		if (enemyIndex == enemiesToSpawn.Count && bossIndex == bossesToSpawn.Count)
+		{
+			enemyIndex = 0;
+			bossIndex = 0;
+		}
+		
+		if (enemyIndex < enemiesToSpawn.Count)
+		{
+			switch (enemiesToSpawn[enemyIndex])
+			{
+				case Enemies.Ske : {
+					enemy = (GameObject)GameObject.Instantiate (skePrefav);
+					break;
+			}
+			case Enemies.Zom : {
+				enemy = (GameObject)GameObject.Instantiate (zomPrefav);
+				break;
+			}
+			case Enemies.Vam : {
+				enemy = (GameObject)GameObject.Instantiate (vamPrefav);
+				break;
+			}
+			}
+			enemyIndex ++;
+		}
+//		if (bossIndex < bossesToSpawn.Length)
+//		{
+//			bossIndex ++;
+//		}
+		
+		enemy.transform.parent = floor;
 		float x = Random.value > 0.5 ? -3.5f : 3.5f;
-		enemy.transform.position = new Vector2(x, -Random.Range(3f, 4f));
+		enemy.transform.position = new Vector2(x, -Random.Range(2.2f, 3.8f));
 		AddEnemy(enemy);
 	}
 	
 	public void LoadLevel (int level) {
 		kills = 0;
-		killsInThisLevel = level * 10;
+		killsInThisLevel = Levels.Kills(level);
+		List<Enemies>[] enems = Levels.EnemiesAndBosses(level);
+		enemiesToSpawn = enems[0];
+		bossesToSpawn = enems[1];
+		
+		enemyIndex = 0;
 		
 		ShowKills ();
 	}
 	
 	public void KillEnemy (GameObject enemy)
 	{
-		enemiesToKill.Add (enemy);
-		AddKills();
+		lastDeadEnemyIndex ++;
+		if (deadEnemies.Length == lastDeadEnemyIndex) lastDeadEnemyIndex = 0;
+		
+		if (deadEnemies[lastDeadEnemyIndex] != null)
+		{
+			enemies.Remove(deadEnemies[lastDeadEnemyIndex]);
+			Destroy(deadEnemies[lastDeadEnemyIndex]);
+		}
+		deadEnemies[lastDeadEnemyIndex] = enemy;
+		
+		if (enemy.GetComponent<Enemy>().type != Enemies.Rat)
+			AddKills();
 	}	
 	
 	public void AddEnemy (GameObject enemy) 
@@ -85,9 +143,10 @@ public class EnemyManager : MonoBehaviour {
 	
 	public GameObject CreateDropEnemy (Vector2 pos)
 	{
-		GameObject enemy = (GameObject)GameObject.Instantiate (dropEnemyPrefav);
+		GameObject enemy = (GameObject)GameObject.Instantiate (ratPrefav);
+		enemy.transform.parent = floor;
 		enemy.transform.position = pos;
-		enemy.GetComponent<Enemy> ().FallTo (pos.x + Random.Range (-0.2f, 0.2f), -Random.Range (3.8f, 4.0f));
+		enemy.GetComponent<Enemy> ().FallTo (pos.x + Random.Range (-0.2f, 0.2f), -Random.Range (2.2f, 3.8f));
 		GameManager.enemies.AddEnemy(enemy);
 		return enemy;
 	}

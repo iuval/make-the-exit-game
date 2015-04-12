@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 82329e8eda5dc4ac1aaa768e1b771f26
-timeCreated: 1428283236
+timeCreated: 1428472071
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -57,52 +57,52 @@ TextureImporter:
     - name: Dude weapon hit_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 12
-        width: 36
-        height: 108
+        x: 24
+        y: 24
+        width: 64
+        height: 152
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Dude weapon hit_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 12
-        width: 40
-        height: 108
-      alignment: 0
-      pivot: {x: .5, y: .5}
+        x: 128
+        y: 24
+        width: 72
+        height: 152
+      alignment: 9
+      pivot: {x: .720622599, y: .513063133}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Dude weapon hit_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 12
-        width: 36
-        height: 108
+        x: 264
+        y: 24
+        width: 64
+        height: 152
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Dude weapon hit_3
       rect:
         serializedVersion: 2
-        x: 188
-        y: 12
-        width: 36
-        height: 108
+        x: 392
+        y: 24
+        width: 48
+        height: 152
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Dude weapon hit_4
       rect:
         serializedVersion: 2
-        x: 248
-        y: 12
-        width: 44
-        height: 108
-      alignment: 0
-      pivot: {x: .5, y: .5}
+        x: 512
+        y: 24
+        width: 72
+        height: 152
+      alignment: 9
+      pivot: {x: .362110555, y: .509797335}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

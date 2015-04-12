@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f654f400ec453400cb2e2916d8470060
-timeCreated: 1428281864
+timeCreated: 1428472009
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -54,22 +54,22 @@ TextureImporter:
     - name: Dude hit low_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 12
-        width: 40
-        height: 108
-      alignment: 0
-      pivot: {x: .5, y: .5}
+        x: 32
+        y: 24
+        width: 56
+        height: 168
+      alignment: 9
+      pivot: {x: .520647705, y: .46558702}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Dude hit low_1
       rect:
         serializedVersion: 2
-        x: 68
-        y: 12
-        width: 40
-        height: 108
-      alignment: 0
-      pivot: {x: .5, y: .5}
+        x: 152
+        y: 24
+        width: 80
+        height: 176
+      alignment: 9
+      pivot: {x: .369918823, y: .445252031}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

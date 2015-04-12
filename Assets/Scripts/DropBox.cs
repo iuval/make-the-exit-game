@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class DropBox : Box {
 
@@ -13,7 +13,7 @@ public class DropBox : Box {
 	
 	}
 	
-	public override void DoEffect (ArrayList positions) {
+	public override void DoEffect (List<Vector2> positions) {
 		Vector2 vec = (Vector2)positions[0];
 		Vector2 creatBoxAt = GameManager.items.all[(int)vec.x, (int)vec.y].transform.position;
 		foreach (Vector2 pos in positions) {

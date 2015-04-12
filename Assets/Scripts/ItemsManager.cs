@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class ItemsManager : MonoBehaviour
 {
@@ -10,7 +10,7 @@ public class ItemsManager : MonoBehaviour
 		Diam,
 		Wood,
 		Enemy,
-		Lock,
+		Key,
 		IronSword,
 		GoldSword,
 		DiamSword,
@@ -19,7 +19,8 @@ public class ItemsManager : MonoBehaviour
 		DiamShield,
 		Treasure,
 		Food,
-		Heart
+		Heart,
+		DoorKey
 	};
 
 	public GameObject food;
@@ -52,7 +53,7 @@ public class ItemsManager : MonoBehaviour
 	// Movement
 	public static Vector2 invalidPosition = new Vector2 (-1, -1);
 	public static Vector2 endPosition = new Vector2 (-2, -2);
-	private ArrayList selectedPositions = new ArrayList ();
+	private List<Vector2> selectedPositions = new List<Vector2> ();
 	private Vector2 onPressPos;
 	public static int[][] neighbours = {  				      new int[] {  0, -1 },
 										new int[] { -1,  0 },                       new int[] {  1,  0 },
@@ -67,8 +68,8 @@ public class ItemsManager : MonoBehaviour
 	int legendariesCount;
 	
 	// Consumables
-	ArrayList bonuses = new ArrayList ();
-	ArrayList bonusesToKill = new ArrayList ();
+	List<Box> bonuses = new List<Box> ();
+	List<Box> bonusesToKill = new List<Box> ();
 	
 	int level;
 	
@@ -256,6 +257,8 @@ public class ItemsManager : MonoBehaviour
 				} else if (box.Element == Elements.Treasure) {
 					GameManager.instance.AddGold(box.GetComponent<Bonus>().gold);
 					Destroy(all [(int)onReleasePos.x, (int)onReleasePos.y]);
+				} else if (box.Element == Elements.DoorKey) {
+					GameManager.instance.hasTheKey = true;
 				}		
 				all [(int)onReleasePos.x, (int)onReleasePos.y] = null;
 				GameManager.items.CreateBoxAtX((int)onReleasePos.x);

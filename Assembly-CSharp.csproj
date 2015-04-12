@@ -61,6 +61,7 @@
      <Compile Include="Assets\Facebook\Scripts\NativeDialogModes.cs" />
      <Compile Include="Assets\Scripts\Background.cs" />
      <Compile Include="Assets\Scripts\Box.cs" />
+     <Compile Include="Assets\Scripts\Door.cs" />
      <Compile Include="Assets\Scripts\DropAI\Bonus.cs" />
      <Compile Include="Assets\Scripts\DropAI\DropAI.cs" />
      <Compile Include="Assets\Scripts\DropBox.cs" />
@@ -71,6 +72,7 @@
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\ItemsManager.cs" />
      <Compile Include="Assets\Scripts\ItemsMenu.cs" />
+     <Compile Include="Assets\Scripts\Levels.cs" />
      <Compile Include="Assets\Scripts\Menu.cs" />
      <Compile Include="Assets\Scripts\Menu\GameMenuItem.cs" />
      <Compile Include="Assets\Scripts\NewBox.cs" />

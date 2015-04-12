@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Box : MonoBehaviour
 {
@@ -32,10 +32,10 @@ public class Box : MonoBehaviour
 		}
 	}
 	
-	public bool LookForMatches(ArrayList positions) {
+	public bool LookForMatches(List<Vector2> positions) {
 		foreach (Pattern pattern in patterns) {
 			if (positions.Count == pattern.Length) {
-				ArrayList boxChecked = new ArrayList();
+				List<Vector2> boxChecked = new List<Vector2>();
 				int matchCount = 0;
 				Vector2 pos;
 				foreach (ItemsManager.Elements elem in pattern.pattern) {
@@ -71,7 +71,7 @@ public class Box : MonoBehaviour
 		isMoving = true;
 	}
 	
-	public virtual void DoEffect(ArrayList positions) {}
+	public virtual void DoEffect(List<Vector2> positions) {}
 }
 
 [System.Serializable]

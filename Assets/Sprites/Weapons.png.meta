@@ -1,12 +1,12 @@
 fileFormatVersion: 2
 guid: 157d336ca72c749f09c21a2b21c7663e
-timeCreated: 1428285987
+timeCreated: 1428474649
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Weapons_0
-    21300002: Weapons_1
-    21300004: Weapons_2
+    21300000: Weapons_iron
+    21300002: Weapons_gold
+    21300004: Weapons_diam
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -52,33 +52,33 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Weapons_0
+    - name: Weapons_iron
       rect:
         serializedVersion: 2
-        x: 4
-        y: 16
-        width: 12
-        height: 48
+        x: 8
+        y: 32
+        width: 24
+        height: 96
       alignment: 9
-      pivot: {x: .83446449, y: .108971559}
+      pivot: {x: .804353058, y: .0813694373}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Weapons_1
-      rect:
-        serializedVersion: 2
-        x: 28
-        y: 16
-        width: 20
-        height: 52
-      alignment: 9
-      pivot: {x: .5, y: .0913781375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Weapons_2
+    - name: Weapons_gold
       rect:
         serializedVersion: 2
         x: 56
-        y: 8
-        width: 20
-        height: 64
+        y: 32
+        width: 40
+        height: 104
+      alignment: 9
+      pivot: {x: .5, y: .0913781375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Weapons_diam
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 40
+        height: 128
       alignment: 9
       pivot: {x: .494097888, y: .0776154995}
       border: {x: 0, y: 0, z: 0, w: 0}

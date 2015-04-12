@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 92d4bde44bb43446d9eb87fc4005ff70
-timeCreated: 1428280950
+timeCreated: 1428471991
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -54,20 +54,20 @@ TextureImporter:
     - name: Dude high hit_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 12
-        width: 52
-        height: 108
+        x: 16
+        y: 24
+        width: 104
+        height: 152
       alignment: 9
-      pivot: {x: .387401998, y: .51748836}
+      pivot: {x: .459972352, y: .504108071}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Dude high hit_1
       rect:
         serializedVersion: 2
-        x: 68
-        y: 12
-        width: 40
-        height: 112
+        x: 152
+        y: 24
+        width: 64
+        height: 152
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

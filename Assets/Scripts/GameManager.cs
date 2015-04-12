@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 	public static ItemsManager items;
 	public static Dude dude;
 	public static EnemyManager enemies;
+	public static Door door;
 	
 	public Menu menu;
 	
@@ -27,11 +28,15 @@ public class GameManager : MonoBehaviour
 	int level;
 	int gold;
 	
+	public bool hasTheKey;
+	public bool killedAll;
+	
 	void Awake() {
 		instance = this;
 		items = GetComponent<ItemsManager>();
 		enemies = GetComponent<EnemyManager>();
 		dude = GameObject.Find("Dude").GetComponent<Dude>();
+		door = GameObject.Find("Door").GetComponent<Door>();
 	}
 	
 	void Start () {
@@ -50,19 +55,37 @@ public class GameManager : MonoBehaviour
 		if (!dude.IsAlive()) {
 			EndGame();
 		}
+		
+		if (hasTheKey && killedAll) {
+			isPlaying = false;
+			hasTheKey = false;
+			killedAll = false;
+			door.Open ();
+			dude.GoToDoor ();
+		}
 	}
 	
-	void InitGame() {
+	public void NextLevel() 
+	{
+		isPlaying = false;
+		
+		level ++;
+		LoadLevel();
+	}
+	
+	void LoadLevel() {
 		time = 0;
 		SetTime();
 		
-		level = 1;
+		door.transform.position = Levels.DoorPosition(level);
 		
+		items.Clear ();
 		items.LoadLevel(level);
-		enemies.LoadLevel(level);
-		dude.Load();
 		
-		goldText.text = "0";
+		enemies.Clear ();
+		enemies.LoadLevel(level);
+		
+		dude.Load();
 		
 		isPlaying = true;
 	}
@@ -70,15 +93,17 @@ public class GameManager : MonoBehaviour
 	public void NewGame() {
 		ClearGame();
 		menu.Hide();
-		InitGame();
+		level = 0;
+		NextLevel();
 	}
 	
 	void ClearGame() {
+		goldText.text = "0";
 		menu.Show();
 		
 		enemies.Clear ();
 		items.Clear ();
-		dude.Clear ();
+		dude.Clear();
 	}
 	
 	void EndGame() {

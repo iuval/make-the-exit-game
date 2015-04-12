@@ -4,6 +4,7 @@ using System.Collections;
 public class Enemy : MonoBehaviour {
 	Transform playerTransform;
 	
+	public Enemies type;
 	public float dropSpeed = 5f;
 	public float speed;
 	public float hitSpeed;
@@ -22,9 +23,9 @@ public class Enemy : MonoBehaviour {
 	float healthBarLength;
 	
 	Vector2 fallTo;
-	bool facingRight = true;
+	bool facingRight;
 	Animator anim;
-	
+
 	void Awake () {
 		anim = GetComponent<Animator> ();
 	}
@@ -35,6 +36,7 @@ public class Enemy : MonoBehaviour {
 		currentHealth = maxHealth;
 		timeToHit = hitSpeed;
 		isAlive = true;
+		facingRight = true;
 	}
 	
 	void OnTriggerEnter2D(Collider2D coll) {

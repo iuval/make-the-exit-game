@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Figures : MonoBehaviour { 
 	public Box[] objects;
 	
-	public void Check(ArrayList positions)
+	public void Check(List<Vector2> positions)
 	{
 		bool check = false;
 		foreach (Box box in objects)
