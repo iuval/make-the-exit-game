@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 157d336ca72c749f09c21a2b21c7663e
-timeCreated: 1428474649
+timeCreated: 1429721874
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -55,30 +55,30 @@ TextureImporter:
     - name: Weapons_iron
       rect:
         serializedVersion: 2
-        x: 8
-        y: 32
-        width: 24
-        height: 96
+        x: 4
+        y: 28
+        width: 32
+        height: 100
       alignment: 9
       pivot: {x: .804353058, y: .0813694373}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Weapons_gold
       rect:
         serializedVersion: 2
-        x: 56
-        y: 32
-        width: 40
-        height: 104
+        x: 52
+        y: 28
+        width: 48
+        height: 112
       alignment: 9
       pivot: {x: .5, y: .0913781375}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Weapons_diam
       rect:
         serializedVersion: 2
-        x: 112
-        y: 16
-        width: 40
-        height: 128
+        x: 108
+        y: 12
+        width: 48
+        height: 136
       alignment: 9
       pivot: {x: .494097888, y: .0776154995}
       border: {x: 0, y: 0, z: 0, w: 0}

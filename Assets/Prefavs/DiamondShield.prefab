@@ -91,7 +91,7 @@ MonoBehaviour:
   isAlive: 1
   patterns:
   - pattern: 010000000100000002000000
-  - pattern: 0700000002000000
+  - pattern: 0a00000002000000
 --- !u!114 &11491544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -132,7 +132,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -900655065
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300036, guid: 02151a09bc2174b4f8080dfb40efb33b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 94bf50aa76b4047a8b71719c623c3d8c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

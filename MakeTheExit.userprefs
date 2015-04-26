@@ -1,14 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Game/Levels.cs">
     <Files>
-      <File FileName="Assets/Scripts/Dude.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Enemy.cs" Line="78" Column="21" />
-      <File FileName="Assets/Scripts/ItemsManager.cs" Line="13" Column="6" />
-      <File FileName="Assets/Scripts/EnemyManager.cs" Line="86" Column="52" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="13" Column="11" />
-      <File FileName="Assets/Scripts/Background.cs" Line="6" Column="33" />
-      <File FileName="Assets/Scripts/Figures.cs" Line="16" Column="4" />
+      <File FileName="Assets/Scripts/Game/ItemsManager.cs" Line="203" Column="20" />
+      <File FileName="Assets/Scripts/Game/Levels.cs" Line="108" Column="13" />
+      <File FileName="Assets/Scripts/Game/Dude.cs" Line="310" Column="37" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

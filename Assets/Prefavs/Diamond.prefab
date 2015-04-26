@@ -85,7 +85,7 @@ MonoBehaviour:
   srites: []
   Element: 2
   isMoving: 0
-  isClickable: 1
+  isClickable: 0
   dropSpeed: 5
   isAlive: 0
   patterns: []

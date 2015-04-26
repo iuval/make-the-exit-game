@@ -1,14 +1,18 @@
 fileFormatVersion: 2
 guid: 3ac36019f1d1842a792e13b0d9fb0b9f
-timeCreated: 1428299351
+timeCreated: 1430069855
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: ui_0
     21300002: ui_1
-    21300004: ui_2
-    21300006: ui_3
-    21300008: ui_4
+    21300004: ui_panel
+    21300006: ui_button_normal
+    21300008: ui_button_press
+    21300010: ui_inner_panel
+    21300012: ui_2
+    21300014: ui_3
+    21300016: ui_shoes
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -34,7 +38,7 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 0
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -57,53 +61,93 @@ TextureImporter:
     - name: ui_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 69
-        width: 60
-        height: 40
+        x: 12
+        y: 172
+        width: 52
+        height: 44
       alignment: 0
       pivot: {x: .5, y: .5}
-      border: {x: 15, y: 12, z: 17, w: 16}
+      border: {x: 8, y: 8, z: 8, w: 8}
     - name: ui_1
       rect:
         serializedVersion: 2
-        x: 76
-        y: 73
+        x: 80
+        y: 180
         width: 48
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
-      border: {x: 3, y: 4, z: 8, w: 4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_panel
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 174
+        width: 48
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 6, y: 6, z: 6, w: 6}
+    - name: ui_button_normal
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 176
+        width: 41
+        height: 36
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 4, y: 4, z: 4, w: 4}
+    - name: ui_button_press
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 133
+        width: 41
+        height: 36
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 4, y: 4, z: 4, w: 4}
+    - name: ui_inner_panel
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 130
+        width: 48
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 2, y: 2, z: 2, w: 2}
     - name: ui_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 67
-        width: 48
-        height: 40
+        x: 15
+        y: 128
+        width: 44
+        height: 36
       alignment: 0
       pivot: {x: .5, y: .5}
-      border: {x: 12, y: 11, z: 17, w: 14}
+      border: {x: 4, y: 2, z: 2, w: 4}
     - name: ui_3
       rect:
         serializedVersion: 2
-        x: 182
-        y: 68
+        x: 80
+        y: 138
         width: 48
-        height: 40
+        height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
-      border: {x: 14, y: 11, z: 17, w: 15}
-    - name: ui_4
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ui_shoes
       rect:
         serializedVersion: 2
-        x: 183
-        y: 21
-        width: 48
-        height: 40
+        x: 22
+        y: 80
+        width: 25
+        height: 21
       alignment: 0
       pivot: {x: .5, y: .5}
-      border: {x: 13, y: 12, z: 13, w: 12}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 

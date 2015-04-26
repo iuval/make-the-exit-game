@@ -89,7 +89,6 @@ MonoBehaviour:
   dropSpeed: 5
   isAlive: 1
   patterns:
-  - pattern: 000000000000000000000000
   - pattern: 010000000100000001000000
 --- !u!212 &21237136
 SpriteRenderer:
